@@ -29,31 +29,9 @@
 
 ## Building the Android APK
 
-### Option 1: EAS Cloud Build (Recommended)
+### Option 1: Local Build (Recommended for NEURONIC)
 
-#### Preview Build (Unsigned APK for Testing)
-```bash
-npm run build:android
-# or
-eas build -p android --profile preview
-```
-
-#### Signed Preview Build
-```bash
-eas build -p android --profile preview-signed
-```
-This will prompt you to generate a keystore on first run.
-
-#### Production Build
-```bash
-npm run build:android:prod
-# or
-eas build -p android --profile production
-```
-
-### Option 2: Local Build (Recommended for Native Modules)
-
-Since NEURONIC uses `cactus-react-native` with native AI modules, local builds may be more reliable:
+Due to the specialized native AI modules (`cactus-react-native`), local builds are recommended:
 
 1. **Prebuild the native project:**
    ```bash
@@ -75,10 +53,36 @@ Since NEURONIC uses `cactus-react-native` with native AI modules, local builds m
    - Release: `android/app/build/outputs/apk/release/app-release.apk`
    - Debug: `android/app/build/outputs/apk/debug/app-debug.apk`
 
+### Option 2: EAS Cloud Build
+
+> **Note:** EAS cloud builds may fail due to the specialized native AI modules. Use local builds if you encounter Gradle errors.
+
+#### Preview Build (Unsigned APK for Testing)
+```bash
+npm run build:android
+# or
+eas build -p android --profile preview
+```
+
+#### Signed Preview Build
+```bash
+eas build -p android --profile preview-signed
+```
+This will prompt you to generate a keystore on first run.
+
+#### Production Build
+```bash
+npm run build:android:prod
+# or
+eas build -p android --profile production
+```
+
 ### Option 3: Using npm script
 ```bash
 npm run build:local
 ```
+
+This runs prebuild and Gradle in one command.
 
 ## Build Configuration
 
@@ -145,9 +149,17 @@ eas login   # Login if needed
 
 ### Cactus SDK build issues
 Ensure you have:
-- NDK installed in Android Studio
-- CMake installed
+- NDK installed in Android Studio (version 26.1.10909125 or later)
+- CMake installed (version 3.22.1 or later)
 - Proper ANDROID_HOME environment variable
+- Java 17+ installed
+
+### EAS Cloud Build fails at Gradle phase
+The `cactus-react-native` module requires specific native build tools that may not be available in EAS cloud. Use local builds instead:
+```bash
+npx expo prebuild --platform android --clean
+cd android && ./gradlew assembleRelease
+```
 
 ## Testing the APK
 

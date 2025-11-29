@@ -4,7 +4,14 @@
         "appVersionSource": "remote"
     },
     "build": {
+        "base": {
+            "android": {
+                "image": "latest",
+                "resourceClass": "medium"
+            }
+        },
         "development": {
+            "extends": "base",
             "developmentClient": true,
             "distribution": "internal",
             "android": {
@@ -13,21 +20,22 @@
             }
         },
         "preview": {
+            "extends": "base",
             "distribution": "internal",
             "android": {
                 "buildType": "apk",
-                "gradleCommand": ":app:assembleRelease",
                 "withoutCredentials": true
             }
         },
         "preview-signed": {
+            "extends": "base",
             "distribution": "internal",
             "android": {
-                "buildType": "apk",
-                "gradleCommand": ":app:assembleRelease"
+                "buildType": "apk"
             }
         },
         "production": {
+            "extends": "base",
             "android": {
                 "buildType": "app-bundle"
             }
