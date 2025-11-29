@@ -20,11 +20,12 @@ Neuronic is a local-first Cognitive Twin for your mobile device. It runs entirel
 ## How It Works
 
 When you add a memory (text, voice, or image), Neuronic processes it on-device:
+![start](assets/start.png)
 
 1. Text Memory
    - A lightweight local LLM extracts key ideas and tags.
    - The content is embedded into a vector representation.
-
+![Text](assets/text.png)
 2. Voice Memory
    - Audio is transcribed locally (e.g., Whisper small).
    - Transcription is embedded for search and linking.
@@ -32,6 +33,7 @@ When you add a memory (text, voice, or image), Neuronic processes it on-device:
 3. Image Memory
    - A small vision model generates labels and concepts.
    - Image-derived text/tags are embedded for semantic search.
+![Images](assets/images.png)
 
 Each memory is stored as:
 
@@ -62,6 +64,7 @@ Inspired by cognitive consolidation, Neuronic runs a daily background process:
 - Updates long-term knowledge entries
 
 The result is structured insights and durable patterns across your timeline.
+![Insights](assets/insights.png)
 
 ## Privacy Model
 
@@ -70,6 +73,7 @@ The result is structured insights and durable patterns across your timeline.
 - No server dependency
 - All intelligence happens locally
 - Optional: user-triggered expansion via hybrid key for cloud-assisted processing
+![Offline](assets/offline.png)
 
 ## Tech Stack
 
@@ -186,6 +190,56 @@ npx eas build -p android
 - Cross-modal linking improvements (voice ↔ image ↔ text)
 - On-device fine-tuning of user-specific embeddings
 - Optional encrypted export/import of the local memory graph
+
+## Screens and Usage
+
+This section maps core user flows to actual screens and components in the repository.
+
+### Add Memory
+
+Code: `app/(tabs)/add.tsx`, components: `components/VoiceRecorder.tsx`, `components/ImagePicker.tsx`
+
+- Text: Type a thought and save. The app extracts key ideas and tags locally and creates an embedding.
+- Voice: Record using `VoiceRecorder`. Audio is transcribed on-device (e.g., Whisper small) and embedded.
+- Image: Pick or capture using `ImagePicker`. A small vision model generates labels/concepts and produces embeddings.
+- Result: Each saved item becomes a memory with timestamp, tags, and a vector representation in SQLite.
+
+### Search Memories
+
+Code: `app/(tabs)/search.tsx`, components: `components/SearchBar.tsx`, `components/MemoryList.tsx`
+
+- Enter a natural-language query (no need for exact keywords).
+- The query is embedded and matched against memory embeddings via vector similarity.
+- Example queries:
+   - Show me the business ideas I had last week
+   - What were my thoughts about starting a hardware project?
+   - Find memories related to productivity
+
+### All Memories (Timeline)
+
+Code: `app/(tabs)/index.tsx`, components: `components/MemoryList.tsx`, `components/MemoryCard.tsx`
+
+- Displays a chronological feed of memories with quick context.
+- Tap a memory to view details and navigate to related memories.
+- Related items are surfaced using embedding similarity (see `components/RelatedMemories.tsx`).
+
+### Insights (Daily Summaries)
+
+Code: `app/(tabs)/insights.tsx`, services: `services/consolidation.ts`, components: `components/ConsolidationCard.tsx`
+
+- Once per day, the consolidation service groups new memories by theme and produces a compact summary packet.
+- The Insights tab shows daily summaries, patterns, and recurring topics.
+- Depending on configuration, it may also expose a manual trigger for consolidation.
+
+### Model Downloads
+
+Component: `components/ModelDownloadScreen.tsx`
+
+- Handles downloading or verifying local model assets (LLM, embeddings, transcription, vision) used by the app.
+- Use this screen if models are missing or you need to update them.
+
+Reference them here once added:
+
 
 ## License
 
