@@ -1,29 +1,16 @@
+<a href="https://reactnative.dev"><img src="https://img.shields.io/badge/Framework-React%20Native-61DAFB?logo=react" alt="React Native" /></a>
+   <a href="https://expo.dev"><img src="https://img.shields.io/badge/Runtime-Expo-000020?logo=expo" alt="Expo" /></a>
+   <a href="#tech-stack"><img src="https://img.shields.io/badge/On--Device-Cactus%20SDK-5A3FD9" alt="Cactus SDK" /></a>
+   <img src="https://img.shields.io/badge/DB-SQLite-003B57?logo=sqlite" alt="SQLite" />
+   <img src="https://img.shields.io/badge/Language-TypeScript-3178C6?logo=typescript" alt="TypeScript" />
+   <img src="https://img.shields.io/badge/UI-NativeWind-38BDF8" alt="NativeWind" />
+   <img src="https://img.shields.io/badge/License-Proprietary-B71C1C" alt="License" />
+
 <p align="center">
    <img src="assets/icon.png" alt="Neuronic Logo" width="160" />
 </p>
 
-<div align="center">
-<table border="1">
-   <tr>
-      <td><strong>React Native</strong></td>
-      <td><strong>Expo</strong></td>
-      <td><strong>Cactus SDK</strong></td>
-      <td><strong>SQLite</strong></td>
-   </tr>
-   <tr>
-      <td><strong>Whisper Small</strong></td>
-      <td><strong>Embeddings</strong></td>
-      <td><strong>Vision Model</strong></td>
-      <td><strong>TypeScript</strong></td>
-   </tr>
-   <tr>
-      <td><strong>NativeWind</strong></td>
-      <td><strong>On-Device Inference</strong></td>
-      <td><strong>Semantic Search</strong></td>
-      <td><strong>Memory Consolidation</strong></td>
-   </tr>
-</table>
-</div>
+   
 
 # Neuronic
 
