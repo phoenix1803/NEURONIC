@@ -191,9 +191,6 @@ npx eas build -p android
 - On-device fine-tuning of user-specific embeddings
 - Optional encrypted export/import of the local memory graph
 
-## Screens and Usage
-
-This section maps core user flows to actual screens and components in the repository.
 
 ### Add Memory
 
