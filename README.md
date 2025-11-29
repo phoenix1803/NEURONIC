@@ -1,3 +1,30 @@
+<p align="center">
+   <img src="assets/icon.png" alt="Neuronic Logo" width="160" />
+</p>
+
+<div align="center">
+<table border="1">
+   <tr>
+      <td><strong>React Native</strong></td>
+      <td><strong>Expo</strong></td>
+      <td><strong>Cactus SDK</strong></td>
+      <td><strong>SQLite</strong></td>
+   </tr>
+   <tr>
+      <td><strong>Whisper Small</strong></td>
+      <td><strong>Embeddings</strong></td>
+      <td><strong>Vision Model</strong></td>
+      <td><strong>TypeScript</strong></td>
+   </tr>
+   <tr>
+      <td><strong>NativeWind</strong></td>
+      <td><strong>On-Device Inference</strong></td>
+      <td><strong>Semantic Search</strong></td>
+      <td><strong>Memory Consolidation</strong></td>
+   </tr>
+</table>
+</div>
+
 # Neuronic
 
 Neuronic is a local-first Cognitive Twin for your mobile device. It runs entirely on-device to capture, organize, search, and consolidate your thoughts without sending any data to the cloud. Neuronic turns your phone into a private "second brain" powered by efficient local LLMs, embeddings, and vision models.
