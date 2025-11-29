@@ -13,6 +13,34 @@ interface VoiceRecorderProps {
     isProcessing?: boolean;
 }
 
+// Custom recording options for Whisper compatibility (16kHz WAV)
+const WHISPER_RECORDING_OPTIONS: Audio.RecordingOptions = {
+    isMeteringEnabled: false,
+    android: {
+        extension: '.wav',
+        outputFormat: Audio.AndroidOutputFormat.DEFAULT,
+        audioEncoder: Audio.AndroidAudioEncoder.DEFAULT,
+        sampleRate: 16000,
+        numberOfChannels: 1,
+        bitRate: 256000,
+    },
+    ios: {
+        extension: '.wav',
+        outputFormat: Audio.IOSOutputFormat.LINEARPCM,
+        audioQuality: Audio.IOSAudioQuality.HIGH,
+        sampleRate: 16000,
+        numberOfChannels: 1,
+        bitRate: 256000,
+        linearPCMBitDepth: 16,
+        linearPCMIsBigEndian: false,
+        linearPCMIsFloat: false,
+    },
+    web: {
+        mimeType: 'audio/wav',
+        bitsPerSecond: 256000,
+    },
+};
+
 export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
     onRecordingComplete,
     isProcessing = false,
@@ -63,9 +91,9 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
                 playsInSilentModeIOS: true,
             });
 
-            // Create and start recording
+            // Create and start recording with Whisper-compatible format (16kHz WAV)
             const { recording } = await Audio.Recording.createAsync(
-                Audio.RecordingOptionsPresets.HIGH_QUALITY
+                WHISPER_RECORDING_OPTIONS
             );
 
             recordingRef.current = recording;
@@ -148,10 +176,10 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
                 onPress={handlePress}
                 disabled={isProcessing}
                 className={`w-20 h-20 rounded-full items-center justify-center ${isRecording
-                        ? 'bg-red-500'
-                        : isProcessing
-                            ? 'bg-gray-600'
-                            : 'bg-primary'
+                    ? 'bg-red-500'
+                    : isProcessing
+                        ? 'bg-gray-600'
+                        : 'bg-primary'
                     } active:opacity-80`}
             >
                 {isProcessing ? (
