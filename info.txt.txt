@@ -1,0 +1,1 @@
+Neuronic is a local-first Cognitive Twin for your mobile device. It runs entirely on-device to capture, organize, search, and consolidate your thoughts without sending any data to the cloud. Neuronic turns your phone into a private "second brain" powered by efficient local LLMs, embeddings, and vision models.
